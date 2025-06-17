@@ -1,0 +1,11 @@
+
+Gen2Vec vocabulary reduction analysis:
+- Total clusters: 99571
+- Average cluster size: 7923.74
+- Identity score mean: 50.57
+- Identity score std: 11.35
+
+Correlations:
+- Pearson: -0.499
+- Spearman: -0.804
+- Normality p-value: 0.0000 → data is not normal
