@@ -109,6 +109,28 @@ def files_dfs(fasta_ral_df,rep_counts):
         print(threshold_value)
         print(percentile)
 
+        print("\n=== DIVERSITY COVERAGE ANALYSIS ===")
+        
+        # Calculate diversity coverage
+        selected_clusters = df_grouped[df_grouped['Total_Member_Count'] > threshold_value]
+        total_sequences_selected = selected_clusters['Total_Member_Count'].sum()
+        total_sequences_all = df_grouped['Total_Member_Count'].sum()
+        diversity_coverage = (total_sequences_selected / total_sequences_all) * 100
+        
+        print(f"Total clusters: {len(df_grouped)}")
+        print(f"Selected clusters: {len(selected_clusters)}")
+        print(f"Total sequences (all clusters): {total_sequences_all}")
+        print(f"Total sequences (selected clusters): {total_sequences_selected}")
+        print(f"Diversity coverage: {diversity_coverage:.2f}%")
+        
+        # Additional statistics
+        print(f"\nMean sequences per cluster (all): {df_grouped['Total_Member_Count'].mean():.2f}")
+        print(f"Mean sequences per cluster (selected): {selected_clusters['Total_Member_Count'].mean():.2f}")
+        print(f"Max cluster size: {df_grouped['Total_Member_Count'].max()}")
+        print(f"Min cluster size in selection: {threshold_value}")
+        print("=================================\n")
+        
+
 
         df_sorted = df_sorted[df_sorted['Total_Member_Count'] > threshold_value]
 
